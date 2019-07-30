@@ -31,3 +31,33 @@ public:
         // write your code here
     }
 };
+
+class Solution {
+public:
+    /**
+     * @param s: a string which consists of lowercase or uppercase letters
+     * @return: the length of the longest palindromes that can be built
+     */
+    int longestPalindrome(string &s) {
+        int result = 0;
+        if(s.empty()) return result;
+        
+        bool nums[128] = {false};
+        
+        for(int c: s){
+            nums[c] = !nums[c];
+            if(!nums[c]) {
+                result+=2;
+            }
+        }
+        for(bool flag: nums){
+            if(flag) {
+                result++;
+                break;
+            }
+        }
+        
+        return result;
+        // write your code here
+    }
+};
